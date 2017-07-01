@@ -29,10 +29,24 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-app.post('/stock', (request, response) => {
+app.post('/add_stock', (request, response) => {
   const { name } = request.body
   const stock = new Stock({ name })
   stock.save()
+
+  response.send({ status: 200 })
+})
+
+app.post('/remove_stock', (request, response) => {
+  const { name } = request.body
+  Stock.findOne({ name }, (error, stock) => {
+    if (error) {
+      throw error
+    }
+
+    stock.remove((error) => {})
+  })
+
   response.send({ status: 200 })
 })
 

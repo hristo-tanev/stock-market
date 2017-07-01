@@ -1,3 +1,25 @@
 .w3-card {
-  width: 40%;
+  width: 25%;
+}
+
+.input-stock {
+  width: 25%;
+}
+
+.w3-input {
+  margin-top: 2%;
+}
+
+.btn-primary {
+  margin-bottom: 2%;
+}
+
+.fa-times {
+  color: grey !important;
+  float: right;
+  margin-top: 5%;
+}
+
+.code {
+  float: left;
 }

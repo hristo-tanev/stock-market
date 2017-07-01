@@ -11,15 +11,33 @@ import { addStock, fetchStocks } from '../actions/stockActions'
 })
 
 export default class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      stockName: ''
+    }
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchStocks())
   }
 
+  getStockName(e) {
+    this.setState({
+      stockName: e.target.value
+    })
+  }
+
   addNewStock() {
-    this.props.dispatch(addStock('This is a card.'))
+    const { stockName } = this.state
+    this.props.dispatch(addStock(stockName))
+    this.setState({
+      stockName: ''
+    })
   }
 
   render() {
+    const { stockName } = this.state
     const Stocks = this.props.stocks.stocks.map((stock, i) => {
       return <Stock key={i + 1} name={stock.name} />
     })
@@ -27,7 +45,11 @@ export default class App extends React.Component {
     return (
       <div class="container">
         {Stocks}
-        <button type="button" onClick={this.addNewStock.bind(this)}>Add stock</button>
+        <div class="w3-panel w3-card input-stock">
+          <input class="w3-input" type="text" value={stockName} onChange={this.getStockName.bind(this)} placeholder="Stock code"/>
+          <br />
+          <button class="btn btn-primary" type="button" onClick={this.addNewStock.bind(this)}>Add stock</button>
+        </div>
       </div>
     )
   }
