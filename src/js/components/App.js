@@ -39,17 +39,21 @@ export default class App extends React.Component {
   render() {
     const { stockName } = this.state
     const Stocks = this.props.stocks.stocks.map((stock, i) => {
-      return <Stock key={i + 1} name={stock.name} />
+      return <li key={i + 1}><Stock name={stock.name} /></li>
     })
 
     return (
       <div class="container">
-        {Stocks}
-        <div class="w3-panel w3-card input-stock">
-          <input class="w3-input" type="text" value={stockName} onChange={this.getStockName.bind(this)} placeholder="Stock code"/>
-          <br />
-          <button class="btn btn-primary" type="button" onClick={this.addNewStock.bind(this)}>Add stock</button>
-        </div>
+        <ul class="stocks">
+          {Stocks}
+          <li>
+            <div class="w3-panel w3-card input-stock">
+              <input class="w3-input" type="text" value={stockName} onChange={this.getStockName.bind(this)} placeholder="Stock code"/>
+              <br />
+              <button class="btn btn-primary" type="button" onClick={this.addNewStock.bind(this)}>Add stock</button>
+            </div>
+          </li>
+        </ul>
       </div>
     )
   }
