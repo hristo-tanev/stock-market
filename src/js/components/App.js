@@ -16,8 +16,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const Stocks = this.props.stocks.stocks.map((stock, i) => {
+      return <div key={i + 1}>{stock.name}</div>
+    })
     return (
       <div class="container">
+        {Stocks}
         <button type="button" onClick={this.addNewStock.bind(this)}>Add stock</button>
       </div>
     )

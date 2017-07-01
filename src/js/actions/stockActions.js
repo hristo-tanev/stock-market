@@ -15,7 +15,10 @@ export function addStock(name) {
       }
     })
     .then((response) => {
-      addStockSuccess(response.data)
+      socket.emit('request stocks')
+      socket.on('broadcast', (stocks) => {
+        dispatch(addStockSuccess(stocks.data))
+      })
     })
     .catch((error) => {
       dispatch(addStockFail())
