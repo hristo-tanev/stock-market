@@ -26,3 +26,9 @@ a {
     display: inline-grid;
     vertical-align: top;
 }
+
+.stock-chart {
+  width: 87%;
+  height: 370px;
+  border: 1px solid black;
+}

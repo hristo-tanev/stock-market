@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Stock from './Stock'
+import StockChart from './StockChart'
 import { addStock, fetchStocks } from '../actions/stockActions'
 
 @connect((store) => {
@@ -44,6 +45,7 @@ export default class App extends React.Component {
 
     return (
       <div class="container">
+        <StockChart />
         <ul class="stocks">
           {Stocks}
           <li>
