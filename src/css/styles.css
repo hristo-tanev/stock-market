@@ -29,6 +29,6 @@ a {
 
 .stock-chart {
   width: 87%;
-  height: 370px;
-  border: 1px solid black;
+  height: 100%;
+  border: 1px solid grey;
 }
