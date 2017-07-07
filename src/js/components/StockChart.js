@@ -1,4 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+@connect((store) => {
+  return {
+    chart: store.chart
+  }
+})
 
 export default class StockChart extends React.Component {
   componentWillMount() {
