@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Stock from './Stock'
 import StockChart from './StockChart'
-import { addStock, fetchStocks } from '../actions/stockActions'
+import { addStock, fetchStocks, existsStock } from '../actions/stockActions'
 
 @connect((store) => {
   return {
@@ -30,11 +30,17 @@ export default class App extends React.Component {
   }
 
   addNewStock() {
-    const { stockName } = this.state
-    this.props.dispatch(addStock(stockName))
-    this.setState({
-      stockName: ''
-    })
+    let { stockName } = this.state
+    stockName = stockName.toUpperCase()
+    this.props.dispatch(existsStock(stockName))
+    setTimeout(() => {
+      if (stockName !== '' && this.props.stocks.stockExists) {
+        this.props.dispatch(addStock(stockName))
+      }
+      this.setState({
+        stockName: ''
+      })
+    }, 2000)
   }
 
   render() {

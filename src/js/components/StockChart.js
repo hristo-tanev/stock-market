@@ -7,7 +7,7 @@ export default class StockChart extends React.Component {
         let mapping = table.mapAs()
         let chart = anychart.stock()
         chart.plot(0).ohlc(mapping).name('Test')
-        chart.title('Test title')
+        chart.title('Stock chart')
         chart.container('chart')
         chart.draw()
       })

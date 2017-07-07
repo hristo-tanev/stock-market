@@ -1,6 +1,7 @@
 const initialState = {
   stocks: [],
-  busy: false
+  busy: false,
+  stockExists: false
 }
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +29,15 @@ export default function reducer(state = initialState, action) {
       }
       case 'REMOVE_STOCK_FAIL': {
         return initialState
+      }
+      case 'EXISTS_STOCK_REQUEST': {
+        return Object.assign({}, state, { busy: true })
+      }
+      case 'EXISTS_STOCK_SUCCESS': {
+        return Object.assign({}, state, { busy: false, stockExists: true })
+      }
+      case 'EXISTS_STOCK_FAIL': {
+        return Object.assign({}, state, { stockExists: false })
       }
   }
 
