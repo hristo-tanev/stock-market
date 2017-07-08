@@ -52,8 +52,7 @@ export default class App extends React.Component {
 
     return (
       <div class="container">
-        {/* <StockChart /> */}
-        {this.props.chart.information.length > 0 ? <StockChart info={this.props.chart.information} /> : <StockChart />}
+        <StockChart info={this.props.chart.information} />
         <ul class="stocks">
           {Stocks}
           <li>

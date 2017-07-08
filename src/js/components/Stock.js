@@ -17,7 +17,10 @@ export default class Stock extends React.Component {
   }
 
   getStockContent(name) {
-    this.props.dispatch(requestContent(name))
+    this.props.dispatch(contentRemove())
+    setTimeout(() => {
+      this.props.dispatch(requestContent(name))
+    }, 1000)
   }
 
   removeCurrentStock(name) {
