@@ -15,7 +15,7 @@ export default function reducer(state = initialState, action) {
       }
       case 'ADD_STOCK_SUCCESS': {
         const { stocks } = action.payload
-        return Object.assign({}, state, { stocks, busy: false })
+        return Object.assign({}, state, { stocks, busy: false, stockExists: true })
       }
       case 'ADD_STOCK_FAIL': {
         return initialState
@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
       }
       case 'REMOVE_STOCK_SUCCESS': {
         const { stocks } = action.payload
-        return Object.assign({}, state, { stocks, busy: false })
+        return Object.assign({}, state, { stocks, busy: false, stockExists: false })
       }
       case 'REMOVE_STOCK_FAIL': {
         return initialState

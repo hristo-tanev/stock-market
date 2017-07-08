@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { removeStock } from '../actions/stockActions'
-import { requestContent } from '../actions/chartActions'
+import { requestContent, contentRemove } from '../actions/chartActions'
 
 @connect((store) => {
   return {
@@ -22,14 +22,17 @@ export default class Stock extends React.Component {
 
   removeCurrentStock(name) {
     this.props.dispatch(removeStock(name))
+    setTimeout(() => {
+      this.props.dispatch(contentRemove())
+    }, 1000)
   }
 
   render() {
     const { name } = this.props
 
     return (
-      <div onClick={this.getStockContent.bind(this, name)} class="w3-panel w3-card">
-        <h2 class="code">{name}</h2>
+      <div class="w3-panel w3-card">
+        <h2 onClick={this.getStockContent.bind(this, name)} class="code">{name}</h2>
         <a onClick={this.removeCurrentStock.bind(this, name)}><i class="fa fa-times"></i></a>
       </div>
     )

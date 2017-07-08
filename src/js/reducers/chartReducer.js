@@ -15,6 +15,9 @@ export default function reducer(state = initialState, action) {
     case 'CONTENT_FAIL': {
       return initialState
     }
+    case 'REMOVE_CONTENT': {
+      return initialState
+    }
   }
   return state
 }

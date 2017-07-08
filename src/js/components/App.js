@@ -7,7 +7,8 @@ import { addStock, fetchStocks, existsStock } from '../actions/stockActions'
 
 @connect((store) => {
   return {
-    stocks: store.stocks
+    stocks: store.stocks,
+    chart: store.chart
   }
 })
 
@@ -51,7 +52,8 @@ export default class App extends React.Component {
 
     return (
       <div class="container">
-        <StockChart />
+        {/* <StockChart /> */}
+        {this.props.chart.information.length > 0 ? <StockChart info={this.props.chart.information} /> : <StockChart />}
         <ul class="stocks">
           {Stocks}
           <li>
